@@ -29,6 +29,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function books()
+    {
+        return $this->belongsToMany('App\Models\Book', 'book_user', 'user_id', 'book_id')
+            ->withPivot('started_in', 'finished_in', 'state', 'description');
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
