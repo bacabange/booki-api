@@ -32,7 +32,8 @@ class User extends Authenticatable
     public function books()
     {
         return $this->belongsToMany('App\Models\Book', 'book_user', 'user_id', 'book_id')
-            ->withPivot('started_in', 'finished_in', 'state', 'description');
+            ->withPivot('started_in', 'finished_in', 'state', 'description')
+            ->withTimestamps();
     }
 
     public function setPasswordAttribute($value)

@@ -10,8 +10,8 @@ class User extends Resource
 
     public function __construct($resource, $token = null)
     {
-        parent::__construct($resource);
         $this->token = $token;
+        parent::__construct($resource);
     }
 
     /**
