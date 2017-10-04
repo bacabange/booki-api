@@ -14,12 +14,15 @@ class Book extends Resource
      */
     public function toArray($request)
     {
-        return parent::toArray([
+        return [
+            'id' => $this->id,
             'name' => $this->name,
             'author' => $this->author,
             'pages' => $this->pages,
             'year' => $this->year,
             'editorial' => $this->editorial,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
             'started_in' => $this->whenPivotLoaded('book_user', function () {
                 return $this->pivot->started_in;
             }),
@@ -32,6 +35,6 @@ class Book extends Resource
             'description' => $this->whenPivotLoaded('book_user', function () {
                 return $this->pivot->description;
             }),
-        ]);
+        ];
     }
 }

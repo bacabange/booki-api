@@ -18,13 +18,27 @@ class BookController extends Controller
         $book->fill($request->only('name', 'author', 'pages', 'year', 'editorial'));
         $book->save();
 
-        $user->books()->attach([
-            $book->id => [
+        $book->users()->attach([
+            $user->id => [
                 'started_in' => $request->get('started_in'),
                 'finished_in' => $request->get('finished_in'),
                 'state' => 'in_progress',
                 'description' => $request->get('description')
             ]
+        ]);
+
+        return new BookResource($book);
+    }
+
+    public function update(Book $book, Request $request)
+    {
+        $user = \Auth::user();
+
+        $user->books()->updateExistingPivot($book->id, [
+            'started_in' => $request->get('started_in'),
+            'finished_in' => $request->get('finished_in'),
+            'state' => $request->get('state'),
+            'description' => $request->get('description')
         ]);
 
         return new BookResource($book);
