@@ -21,4 +21,9 @@ class Book extends Model
             ->withPivot('started_in', 'finished_in', 'state', 'description')
             ->withTimestamps();
     }
+
+    public function stories()
+    {
+        return $this->hasMany('App\Models\Story');
+    }
 }

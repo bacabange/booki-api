@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CreateBookRequest;
+use App\Http\Requests\Api\EditBookRequest;
 use App\Http\Resources\Book as BookResource;
 use App\Models\Book;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class BookController extends Controller
         return new BookResource($book);
     }
 
-    public function update(Book $book, Request $request)
+    public function update(Book $book, EditBookRequest $request)
     {
         $user = \Auth::user();
 
