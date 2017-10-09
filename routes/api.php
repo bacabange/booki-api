@@ -18,6 +18,8 @@ Route::post('login', 'Api\AuthController@login');
 
 Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::get('user/books', 'UserController@listBooks');
+    Route::get('user/profile', 'UserController@profile');
+    Route::patch('user/profile', 'UserController@updateProfile');
 
     Route::post('books/{book}/stories', 'BookController@createStory');
     Route::resource('books', 'BookController');

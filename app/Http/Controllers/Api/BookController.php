@@ -16,7 +16,7 @@ class BookController extends Controller
     /**
      * Create new book
      * @param CreateBookRequest $request
-     * @return BookResource
+     * @return App\Http\Resources\Book
      */
     public function store(CreateBookRequest $request)
     {
@@ -41,7 +41,7 @@ class BookController extends Controller
      * Update book
      * @param Book $book
      * @param EditBookRequest $request
-     * @return BookResource
+     * @return App\Http\Resources\Book
      */
     public function update(Book $book, EditBookRequest $request)
     {
@@ -61,7 +61,7 @@ class BookController extends Controller
      * Create book story
      * @param Book $book
      * @param CreateStoryRequest $request
-     * @return StoryResource
+     * @return App\Http\Resources\Story
      */
     public function createStory(Book $book, CreateStoryRequest $request)
     {
