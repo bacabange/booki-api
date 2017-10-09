@@ -3,21 +3,25 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\CreateStoryRequest;
-use App\Models\Story;
-use App\Http\Resources\Story as StoryResource;
+use App\Http\Resources\StoryCollection;
+use App\Models\Book;
 
 class StoryController extends Controller
 {
-    public function store(CreateStoryRequest $request)
+    /**
+     * List book stories of user
+     * @param Book $book
+     * @return App\Http\Resources\StoryCollection
+     */
+    public function listUserBookStories(Book $book)
     {
-        $story = new Story;
-        $story->fill($request->only('date', 'page', 'chapter', 'is_end', 'summary', 'book_id'));
-        $story->save();
+        $user = \Auth::user();
+        $stories = $user->books()
+            ->where('book_id', $book->id)
+            ->first()
+            ->stories()
+            ->paginate();
 
-        if ($story->is_end) {
-        }
-
-        return new StoryResource($story);
+        return new StoryCollection($stories);
     }
 }

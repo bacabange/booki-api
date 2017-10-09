@@ -24,5 +24,5 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::post('books/{book}/stories', 'BookController@createStory');
     Route::resource('books', 'BookController');
 
-    Route::resource('stories', 'StoryController');
+    Route::get('user/book/{book}/stories', 'StoryController@listUserBookStories');
 });

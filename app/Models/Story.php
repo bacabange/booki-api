@@ -13,7 +13,7 @@ class Story extends Model
      * @var array
      */
     protected $fillable = [
-        'date', 'page', 'chapter', 'is_end', 'summary', 'book_id',
+        'date', 'page', 'chapter', 'is_end', 'summary', 'book_id', 'user_id',
     ];
 
     protected $casts = [
@@ -23,5 +23,10 @@ class Story extends Model
     public function book()
     {
         return $this->belongsTo('App\Models\Book');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
     }
 }

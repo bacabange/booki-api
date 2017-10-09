@@ -65,8 +65,11 @@ class BookController extends Controller
      */
     public function createStory(Book $book, CreateStoryRequest $request)
     {
+        $user = \Auth::user();
         $story = new Story($request->only('date', 'page', 'chapter', 'is_end', 'summary'));
-        $book->stories()->save($story);
+        $story->book()->associate($book);
+        $story->user()->associate($user);
+        $story->save();
 
         if ($story->is_end) {
             $user = \Auth::user();

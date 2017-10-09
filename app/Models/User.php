@@ -36,6 +36,11 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
+    public function stories()
+    {
+        return $this->hasMany('App\Models\Story', 'user_id');
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);

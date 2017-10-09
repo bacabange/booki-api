@@ -22,8 +22,10 @@ class CreateStoryTable extends Migration
             $table->boolean('is_end')->default(false);
             $table->text('summary')->nullable();
             $table->integer('book_id')->unsigned();
+            $table->integer('user_id')->unsigned();
 
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -36,6 +38,6 @@ class CreateStoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('story');
+        Schema::dropIfExists('stories');
     }
 }
