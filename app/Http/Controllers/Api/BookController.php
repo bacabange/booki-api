@@ -5,12 +5,19 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CreateBookRequest;
 use App\Http\Requests\Api\EditBookRequest;
+use App\Http\Requests\Api\CreateStoryRequest;
 use App\Http\Resources\Book as BookResource;
+use App\Http\Resources\Story as StoryResource;
 use App\Models\Book;
-use Illuminate\Http\Request;
+use App\Models\Story;
 
 class BookController extends Controller
 {
+    /**
+     * Create new book
+     * @param CreateBookRequest $request
+     * @return BookResource
+     */
     public function store(CreateBookRequest $request)
     {
         $user = \Auth::user();
@@ -30,7 +37,12 @@ class BookController extends Controller
 
         return new BookResource($book);
     }
-
+    /**
+     * Update book
+     * @param Book $book
+     * @param EditBookRequest $request
+     * @return BookResource
+     */
     public function update(Book $book, EditBookRequest $request)
     {
         $user = \Auth::user();
@@ -43,5 +55,27 @@ class BookController extends Controller
         ]);
 
         return new BookResource($book);
+    }
+
+    /**
+     * Create book story
+     * @param Book $book
+     * @param CreateStoryRequest $request
+     * @return StoryResource
+     */
+    public function createStory(Book $book, CreateStoryRequest $request)
+    {
+        $story = new Story($request->only('date', 'page', 'chapter', 'is_end', 'summary'));
+        $book->stories()->save($story);
+
+        if ($story->is_end) {
+            $user = \Auth::user();
+
+            $book_user = $user->books()->where('book_id', $book->id)->first();
+            $book_user->pivot->state = 'finished';
+            $book_user->pivot->save();
+        }
+
+        return new StoryResource($story);
     }
 }

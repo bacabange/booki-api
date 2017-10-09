@@ -27,8 +27,7 @@ class CreateStoryRequest extends FormRequest
             'date' => 'required|date',
             'page' => 'required',
             'is_end' => 'required|boolean',
-            'summary' => 'required',
-            'book_id' => 'required|exists:books,id'
+            'summary' => 'required'
         ];
     }
 }

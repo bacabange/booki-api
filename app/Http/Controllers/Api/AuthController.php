@@ -7,11 +7,15 @@ use App\Http\Requests\Api\RegisterRequest;
 use App\Http\Requests\Api\LoginRequest;
 use App\Http\Resources\User as UserResource;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    /**
+     * Register new user
+     * @param RegisterRequest $request
+     * @return UserResource
+     */
     public function register(RegisterRequest $request)
     {
         $user = User::create($request->only('first_name', 'last_name', 'email', 'password'));
@@ -20,6 +24,11 @@ class AuthController extends Controller
         return new UserResource($user, $token);
     }
 
+    /**
+     * User Auth
+     * @param LoginRequest $request
+     * @return UserResource
+     */
     public function login(LoginRequest $request)
     {
         if (Auth::attempt($request->only('email', 'password'))) {
