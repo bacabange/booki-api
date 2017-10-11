@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\StoryCollection;
 use App\Models\Book;
 
+/**
+ * @resource Story
+ *
+ * Stories resource, it is a small description of read session
+ */
 class StoryController extends Controller
 {
     /**

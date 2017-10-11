@@ -11,6 +11,11 @@ use App\Http\Resources\Story as StoryResource;
 use App\Models\Book;
 use App\Models\Story;
 
+/**
+ * @resource Book
+ *
+ * Book resource
+ */
 class BookController extends Controller
 {
     /**

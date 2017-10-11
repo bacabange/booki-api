@@ -1,0 +1,548 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/all.js"></script>
+
+
+          <script>
+        $(function() {
+            setupLanguages(["bash","javascript"]);
+        });
+      </script>
+      </head>
+
+  <body class="">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <img src="images/logo.png" />
+                    <div class="lang-selector">
+                                  <a href="#" data-language-name="bash">bash</a>
+                                  <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+                            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="Search">
+            </div>
+            <ul class="search-results"></ul>
+              <div id="toc">
+      </div>
+                    <ul class="toc-footer">
+                                  <li><a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a></li>
+                            </ul>
+            </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+          <!-- START_INFO -->
+<h1>Info</h1>
+<p>Welcome to the generated API reference.
+<a href="http://localhost/docs/collection.json">Get Postman Collection</a></p>
+<!-- END_INFO -->
+<h1>Auth</h1>
+<p>Auth resource</p>
+<!-- START_d7b7952e7fdddc07c978c9bdaf757acf -->
+<h2>Register new user</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://booki.dev/api/register" \
+-H "Accept: application/json" \
+    -d "first_name"="et" \
+    -d "last_name"="et" \
+    -d "email"="milo77@example.org" \
+    -d "password"="et" \
+    -d "confirm_password"="et" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://booki.dev/api/register",
+    "method": "POST",
+    "data": {
+        "first_name": "et",
+        "last_name": "et",
+        "email": "milo77@example.org",
+        "password": "et",
+        "confirm_password": "et"
+},
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/register</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td>email</td>
+<td>email</td>
+<td>required</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td>confirm_password</td>
+<td>string</td>
+<td>required</td>
+<td>Must be the same as <code>password</code></td>
+</tr>
+</tbody>
+</table>
+<!-- END_d7b7952e7fdddc07c978c9bdaf757acf -->
+<!-- START_c3fa189a6c95ca36ad6ac4791a873d23 -->
+<h2>User Auth</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://booki.dev/api/login" \
+-H "Accept: application/json" \
+    -d "email"="uzieme@example.org" \
+    -d "password"="rerum" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://booki.dev/api/login",
+    "method": "POST",
+    "data": {
+        "email": "uzieme@example.org",
+        "password": "rerum"
+},
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/login</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>email</td>
+<td>required</td>
+<td>Valid user email</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_c3fa189a6c95ca36ad6ac4791a873d23 -->
+<h1>Book</h1>
+<p>Book resource</p>
+<!-- START_51146bbdc85de247378f2d0f599bdd03 -->
+<h2>Create book story</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://booki.dev/api/books/{book}/stories" \
+-H "Accept: application/json" \
+    -d "date"="1992-11-03" \
+    -d "page"="deleniti" \
+    -d "is_end"="1" \
+    -d "summary"="deleniti" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://booki.dev/api/books/{book}/stories",
+    "method": "POST",
+    "data": {
+        "date": "1992-11-03",
+        "page": "deleniti",
+        "is_end": true,
+        "summary": "deleniti"
+},
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/books/{book}/stories</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td>date</td>
+<td>required</td>
+</tr>
+<tr>
+<td>page</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td>is_end</td>
+<td>boolean</td>
+<td>required</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_51146bbdc85de247378f2d0f599bdd03 -->
+<!-- START_33c6d64a451af167032c5c54df96db5c -->
+<h2>Create new book</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://booki.dev/api/books" \
+-H "Accept: application/json" \
+    -d "name"="exercitationem" \
+    -d "author"="exercitationem" \
+    -d "pages"="113" \
+    -d "year"="113" \
+    -d "started_in"="1984-01-31" \
+    -d "description"="exercitationem" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://booki.dev/api/books",
+    "method": "POST",
+    "data": {
+        "name": "exercitationem",
+        "author": "exercitationem",
+        "pages": 113,
+        "year": 113,
+        "started_in": "1984-01-31",
+        "description": "exercitationem"
+},
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/books</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td>author</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td>pages</td>
+<td>numeric</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>year</td>
+<td>numeric</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>started_in</td>
+<td>date</td>
+<td>required</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_33c6d64a451af167032c5c54df96db5c -->
+<!-- START_85ea01789f6590a62557efa9937b5b6b -->
+<h2>Update book</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://booki.dev/api/books/{book}" \
+-H "Accept: application/json" \
+    -d "started_in"="2002-01-31" \
+    -d "state"="tempore" \
+    -d "description"="tempore" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://booki.dev/api/books/{book}",
+    "method": "PATCH",
+    "data": {
+        "started_in": "2002-01-31",
+        "state": "tempore",
+        "description": "tempore"
+},
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH api/books/{book}</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>started_in</td>
+<td>date</td>
+<td>required</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_85ea01789f6590a62557efa9937b5b6b -->
+<h1>Story</h1>
+<p>Stories resource, it is a small description of read session</p>
+<!-- START_613f02378d2fbb18c2050f6c198d6311 -->
+<h2>List book stories of user</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://booki.dev/api/user/book/{book}/stories" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://booki.dev/api/user/book/{book}/stories",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/user/book/{book}/stories</code></p>
+<p><code>HEAD api/user/book/{book}/stories</code></p>
+<!-- END_613f02378d2fbb18c2050f6c198d6311 -->
+<h1>User</h1>
+<p>User resource, information about user account</p>
+<!-- START_4c6808d9769a680c06f68207f750f75b -->
+<h2>User books list</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://booki.dev/api/user/books" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://booki.dev/api/user/books",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/user/books</code></p>
+<p><code>HEAD api/user/books</code></p>
+<!-- END_4c6808d9769a680c06f68207f750f75b -->
+<!-- START_e0222c2b6611491b0ff4b748818e56e5 -->
+<h2>User profile</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET "http://booki.dev/api/user/profile" \
+-H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://booki.dev/api/user/profile",
+    "method": "GET",
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/user/profile</code></p>
+<p><code>HEAD api/user/profile</code></p>
+<!-- END_e0222c2b6611491b0ff4b748818e56e5 -->
+<!-- START_08fa23ab16ce13d8dce4f994fbaa7d76 -->
+<h2>Update user profile</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PATCH "http://booki.dev/api/user/profile" \
+-H "Accept: application/json" \
+    -d "first_name"="consequatur" \
+    -d "last_name"="consequatur" \
+</code></pre>
+<pre><code class="language-javascript">var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://booki.dev/api/user/profile",
+    "method": "PATCH",
+    "data": {
+        "first_name": "consequatur",
+        "last_name": "consequatur"
+},
+    "headers": {
+        "accept": "application/json"
+    }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PATCH api/user/profile</code></p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>required</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody>
+</table>
+<!-- END_08fa23ab16ce13d8dce4f994fbaa7d76 -->
+      </div>
+      <div class="dark-box">
+                        <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                              </div>
+                </div>
+    </div>
+  </body>
+</html>

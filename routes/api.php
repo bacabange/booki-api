@@ -22,7 +22,8 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::patch('user/profile', 'UserController@updateProfile');
 
     Route::post('books/{book}/stories', 'BookController@createStory');
-    Route::resource('books', 'BookController');
+    Route::post('books/', 'BookController@store');
+    Route::patch('books/{book}', 'BookController@update');
 
     Route::get('user/book/{book}/stories', 'StoryController@listUserBookStories');
 });

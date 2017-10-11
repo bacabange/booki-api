@@ -9,6 +9,11 @@ use App\Http\Resources\User as UserResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * @resource Auth
+ *
+ * Auth resource
+ */
 class AuthController extends Controller
 {
     /**

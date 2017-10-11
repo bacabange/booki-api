@@ -8,6 +8,11 @@ use App\Http\Resources\User as UserResource;
 use App\Http\Requests\Api\UpdateProfileRequest;
 use App\Models\User;
 
+/**
+ * @resource User
+ *
+ * User resource, information about user account
+ */
 class UserController extends Controller
 {
     /**
