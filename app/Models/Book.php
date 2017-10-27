@@ -26,4 +26,14 @@ class Book extends Model
     {
         return $this->hasMany('App\Models\Story');
     }
+
+    /**
+     * Reading Progress of the book
+     *
+     * @return integer
+     */
+    public function getProgressAttribute()
+    {
+        return 20;
+    }
 }
