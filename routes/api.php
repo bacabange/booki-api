@@ -14,6 +14,7 @@
 
 
 Route::post('register', 'Api\AuthController@register');
+Route::post('login/{provider}', 'Api\AuthController@loginSocial');
 Route::post('login', 'Api\AuthController@login');
 
 Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {

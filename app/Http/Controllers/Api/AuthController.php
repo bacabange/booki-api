@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\RegisterRequest;
 use App\Http\Requests\Api\LoginRequest;
+use App\Http\Requests\Api\LoginSocialRequest;
 use App\Http\Resources\User as UserResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -23,10 +24,9 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        $user = User::create($request->only('first_name', 'last_name', 'email', 'password'));
-        $token =  $user->createToken('BookiApp')->accessToken;
+        $dataUser = $this->createUser($request->only('first_name', 'last_name', 'email', 'password'));
 
-        return new UserResource($user, $token);
+        return new UserResource($dataUser['user'], $dataUser['token']);
     }
 
     /**
@@ -46,5 +46,39 @@ class AuthController extends Controller
                 'message' => 'Unauthorised'
             ], 401);
         }
+    }
+
+    public function loginSocial(LoginSocialRequest $request, $provider)
+    {
+        $user = User::where('email', 'LIKE', $request->email)->first();
+
+        if (is_null($user)) {
+            $dataUser = $this->createUser($request->only('first_name', 'last_name', 'email', 'password'));
+
+            $user = $dataUser['user'];
+            $token = $dataUser['token'];
+        }
+
+        if (Auth::loginUsingId($user->id)) {
+            $user = Auth::user();
+            $token =  $user->createToken('BookiApp')->accessToken;
+
+            return new UserResource($user, $token);
+        } else {
+            return response()->json([
+                'message' => 'Unauthorised'
+            ], 401);
+        }
+    }
+
+    public function createUser($user_data)
+    {
+        $user = User::create($user_data);
+        $token =  $user->createToken('BookiApp')->accessToken;
+
+        return [
+            'user' => $user,
+            'token' => $token
+        ];
     }
 }

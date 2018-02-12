@@ -25,6 +25,7 @@ class StoryController extends Controller
             ->where('book_id', $book->id)
             ->first()
             ->stories()
+            ->orderBy('id', 'desc')
             ->paginate();
 
         return new StoryCollection($stories);
