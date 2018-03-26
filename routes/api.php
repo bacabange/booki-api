@@ -12,6 +12,7 @@
 |
 */
 
+Route::get('url-meta-data', 'Api\LinkinHuntController@getUrlData');
 
 Route::post('register', 'Api\AuthController@register');
 Route::post('login/{provider}', 'Api\AuthController@loginSocial');
