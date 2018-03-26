@@ -9,6 +9,6 @@ class LinkinHuntController extends Controller
 {
     public function getUrlData(Request $request)
     {
-        return UrlHelper::get_metadata($request->get('url'));
+        return \UrlHelper::get_metadata($request->get('url'));
     }
 }
