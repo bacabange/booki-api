@@ -34,6 +34,8 @@ class Book extends Model
      */
     public function getProgressAttribute()
     {
-        return 20;
+        $lastStory = $this->stories()->orderBy('id', 'desc')->first();
+        $percentProgress = ($lastStory->page / $this->pages) * 100;
+        return round($percentProgress, 2);
     }
 }

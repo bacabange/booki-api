@@ -23,6 +23,7 @@ class Book extends Resource
             'editorial' => $this->editorial,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'progress' => $this->progress,
             'started_in' => $this->whenPivotLoaded('book_user', function () {
                 return $this->pivot->started_in;
             }),
